@@ -1,0 +1,5 @@
+index.c
+index.cpp
+*.exe
+/.vscode
+/.idea
