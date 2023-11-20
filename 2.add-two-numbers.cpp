@@ -37,18 +37,8 @@ public:
             // nodeValues represent the integers (val) from each of the linked list's current node; they will be added
             int nodeValue1 = 0, nodeValue2 = 0;
             // if we get either l1 or l2 to have reached the end of their list by checking if they have become nullptr, it will be as if we are adding 0, else the value they contain
-            if (l1 == nullptr)
-            {
-                nodeValue1 = 0;
-            }
-            else
-                nodeValue1 = l1->val;
-            if (l2 == nullptr)
-            {
-                nodeValue2 = 0;
-            }
-            else
-                nodeValue2 = l2->val;
+            nodeValue1 = l1 == nullptr ? 0 : l1->val;
+            nodeValue2 = l2 == nullptr ? 0 : l2->val;
             // now, if adding the nodeValues result in number greater than 9 then we need to break the number down to n%10 and 1 (since two digit addition can't have carry greater than one)
             int addedValue = nodeValue1 + nodeValue2 + carry;
             if (addedValue > 9)
@@ -63,8 +53,9 @@ public:
                 carry = 0;
             }
             // finally, once we have done everything for one iteration with the current pair of nodes, we iterate to the next pair of listNodes
-            l1 = l1 != nullptr ? l1->next : l1;
-            l2 = l2 != nullptr ? l2->next : l2;
+            l1 = l1->next != nullptr ? l1->next : l1;
+            l2 = l2->next != nullptr ? l2->next : l2;
+            // and take the temp list node to point to the next value
             temp->next = new ListNode();
             temp = temp->next;
         }
