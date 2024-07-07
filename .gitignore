@@ -3,3 +3,5 @@ index.cpp
 *.exe
 /.vscode
 /.idea
+*.plist
+/*.dSYM
